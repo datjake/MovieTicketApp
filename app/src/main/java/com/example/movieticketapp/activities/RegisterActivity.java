@@ -13,6 +13,7 @@ import java.util.Map;
 public class RegisterActivity extends AppCompatActivity {
     EditText edtEmail, edtPassword, edtFullName;
     Button btnRegister;
+    TextView tvBackToLogin; // 1. Khai báo biến cho TextView
     FirebaseAuth mAuth;
     FirebaseFirestore db;
 
@@ -24,10 +25,18 @@ public class RegisterActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
         db = FirebaseFirestore.getInstance();
 
+        // 2. Ánh xạ ID từ file XML
         edtEmail = findViewById(R.id.edtEmail);
         edtPassword = findViewById(R.id.edtPassword);
         edtFullName = findViewById(R.id.edtFullName);
         btnRegister = findViewById(R.id.btnRegister);
+        tvBackToLogin = findViewById(R.id.tvBackToLogin); // Ánh xạ đúng ID tvBackToLogin
+
+        // 3. Thiết lập sự kiện khi nhấn vào "Đã có tài khoản? Đăng nhập"
+        tvBackToLogin.setOnClickListener(v -> {
+            // Đóng màn hình đăng ký này để quay lại màn hình đăng nhập trước đó
+            finish();
+        });
 
         btnRegister.setOnClickListener(v -> {
             String email = edtEmail.getText().toString().trim();
@@ -36,6 +45,11 @@ public class RegisterActivity extends AppCompatActivity {
 
             if (email.isEmpty() || pass.isEmpty() || name.isEmpty()) {
                 Toast.makeText(this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (pass.length() < 6) {
+                Toast.makeText(this, "Mật khẩu phải có ít nhất 6 ký tự", Toast.LENGTH_SHORT).show();
                 return;
             }
 
@@ -50,13 +64,12 @@ public class RegisterActivity extends AppCompatActivity {
                     db.collection("users").document(uid).set(user).addOnSuccessListener(aVoid -> {
                         Toast.makeText(this, "Đăng ký thành công! Mời bạn đăng nhập.", Toast.LENGTH_SHORT).show();
 
-                        // SỬA TẠI ĐÂY: Chuyển về LoginActivity thay vì MainActivity
+                        // Chuyển về LoginActivity
                         Intent intent = new Intent(RegisterActivity.this, LoginActivity.class);
-                        // Xóa các màn hình trước đó để quay về Login sạch sẽ
                         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_SINGLE_TOP);
                         startActivity(intent);
 
-                        finish(); // Đóng màn hình đăng ký
+                        finish();
                     }).addOnFailureListener(e -> {
                         Toast.makeText(this, "Lỗi lưu thông tin: " + e.getMessage(), Toast.LENGTH_SHORT).show();
                     });

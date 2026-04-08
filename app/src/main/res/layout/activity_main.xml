@@ -4,20 +4,35 @@
     android:layout_height="match_parent"
     android:background="#121212">
 
+    <!-- Tiêu đề trang -->
     <TextView
         android:id="@+id/txtHeader"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:text="Phim Đang Chiếu"
-        android:textColor="#FFF"
+        android:textColor="#E94560"
         android:textSize="22sp"
         android:textStyle="bold" />
 
+    <!-- Nút Đăng xuất (Logout) -->
+    <ImageButton
+        android:id="@+id/btnLogout"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="12dp"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:src="@android:drawable/ic_lock_power_off"
+        android:contentDescription="Logout"
+        android:tint="#E94560" />
+
+    <!-- Danh sách phim -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMovies"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/txtHeader"
         android:padding="8dp" />
+
 </RelativeLayout>
