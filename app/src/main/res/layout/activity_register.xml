@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#121212"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TẠO TÀI KHOẢN"
+        android:textColor="#E94560"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Trải nghiệm điện ảnh trong tầm tay"
+        android:textColor="#888"
+        android:layout_marginBottom="30dp" />
+
+    <EditText
+        android:id="@+id/edtFullName"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:backgroundTint="#E94560"
+        android:hint="Họ và tên"
+        android:inputType="textPersonName"
+        android:textColor="#FFF"
+        android:textColorHint="#666" />
+
+    <EditText
+        android:id="@+id/edtEmail"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#E94560"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textColor="#FFF"
+        android:textColorHint="#666" />
+
+    <EditText
+        android:id="@+id/edtPassword"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="#E94560"
+        android:hint="Mật khẩu (ít nhất 6 ký tự)"
+        android:inputType="textPassword"
+        android:textColor="#FFF"
+        android:textColorHint="#666" />
+
+    <Button
+        android:id="@+id/btnRegister"
+        android:layout_width="match_parent"
+        android:layout_height="55dp"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#E94560"
+        android:text="ĐĂNG KÝ NGAY"
+        android:textColor="#FFF"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/tvBackToLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Đã có tài khoản? Đăng nhập"
+        android:textColor="#E94560"
+        android:padding="8dp"/>
+
+</LinearLayout>
